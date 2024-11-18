@@ -1,30 +1,18 @@
-const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 3000;
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-// GET / (Root route)
-app.get('/', (req, res) => {
-    res.send('Welcome to the Express Application!');
-});
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-// GET /hello
-app.get('/hello', (req, res) => {
-    res.send('Hello Express JS');
-});
-
-// GET /user
-app.get('/user', (req, res) => {
-    const firstname = req.query.firstname || 'Pritesh';
-    const lastname = req.query.lastname || 'Patel';
-    res.json({ firstname, lastname });
-});
-
-// POST /user/:firstname/:lastname
-app.post('/user/:firstname/:lastname', (req, res) => {
-    const { firstname, lastname } = req.params;
-    res.json({ firstname, lastname });
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
